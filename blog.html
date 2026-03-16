@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog – Web Dizajn Savjeti | Brendora Varaždin</title>
+<meta name="description" content="Brendora blog — savjeti o web dizajnu, SEO optimizaciji i digitalnom marketingu za male i srednje tvrtke u Varaždinu i Hrvatskoj.">
+<meta name="keywords" content="web dizajn blog Varaždin, SEO savjeti, digitalni marketing blog, izrada web stranica savjeti">
+<meta name="author" content="Brendora">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://brendora.online/blog.html">
+<meta property="og:title" content="Blog – Brendora Web Dizajn Varaždin">
+<meta property="og:description" content="Savjeti o web dizajnu, SEO-u i digitalnom marketingu za tvrtke u Hrvatskoj.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="hr_HR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Outfit',sans-serif;background:#f8f7f4;color:#1a1a1a;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+:root{
+  --y:#f0c000;--y2:#d4a800;--yp:#fef9e3;
+  --dk:#111010;--mid:#444;--soft:#888;
+  --bd:#e4e2dc;--bg:#f8f7f4;--wh:#ffffff;
+  --r:10px;--r2:18px;
+}
+
+/* NAV */
+#nav{
+  position:fixed;inset:0 0 auto 0;z-index:200;
+  height:60px;background:rgba(248,247,244,0.95);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:space-between;padding:0 6%;
+  transition:box-shadow .25s;
+}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;color:var(--dk)}
+.logo span{color:var(--y2)}
+.nav-ul{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-ul a{font-size:.875rem;font-weight:500;color:var(--mid);transition:color .2s}
+.nav-ul a:hover{color:var(--dk)}
+.nav-ul .active{color:var(--dk);font-weight:700}
+.nav-cta{background:var(--y);color:var(--dk)!important;font-weight:700!important;padding:.42rem 1.1rem;border-radius:var(--r);transition:background .2s,transform .2s}
+.nav-cta:hover{background:var(--y2)!important;transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:4px}
+.ham span{display:block;width:22px;height:2px;background:var(--dk);border-radius:2px;transition:.25s}
+#mm{
+  display:none;position:fixed;top:60px;inset:60px 0 auto 0;
+  background:var(--wh);border-bottom:1px solid var(--bd);
+  flex-direction:column;padding:1rem 6%;gap:0;z-index:199;
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+}
+#mm.open{display:flex}
+#mm a{display:block;padding:.75rem 0;font-size:.95rem;font-weight:500;color:var(--dk);border-bottom:1px solid var(--bd)}
+#mm .mm-cta{margin-top:.75rem;border-bottom:none;background:var(--y);text-align:center;border-radius:var(--r);padding:.75rem;font-weight:700}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:.95rem;
+  padding:.75rem 1.6rem;border-radius:var(--r);border:none;cursor:pointer;
+  transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-y{background:var(--y);color:var(--dk)}
+.btn-y:hover{background:var(--y2);box-shadow:0 6px 20px rgba(212,168,0,.35)}
+.btn-dk{background:var(--dk);color:var(--wh)}
+.btn-dk:hover{background:#2a2a2a;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.btn-ol{background:transparent;color:var(--dk);border:2px solid var(--bd)}
+.btn-ol:hover{border-color:var(--dk)}
+
+/* BLOG HERO */
+.blog-hero{
+  padding:100px 6% 56px;
+  background:var(--wh);border-bottom:1px solid var(--bd);
+}
+.blog-hero .badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:var(--yp);border:1px solid var(--y);color:var(--y2);
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:.3rem .85rem;border-radius:100px;margin-bottom:1rem;
+}
+.blog-hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3rem);font-weight:700;
+  line-height:1.15;color:var(--dk);letter-spacing:-.4px;margin-bottom:.75rem;
+}
+.blog-hero p{font-size:1rem;color:var(--mid);line-height:1.75;max-width:560px}
+.divider{width:40px;height:3px;background:var(--y);border-radius:2px;margin:.9rem 0 1.1rem}
+
+/* BLOG GRID */
+.blog-section{padding:3.5rem 6% 5rem}
+.blog-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+}
+
+/* BLOG CARD */
+.blog-card{
+  background:var(--wh);border:1px solid var(--bd);border-radius:var(--r2);
+  overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;
+  display:flex;flex-direction:column;
+}
+.blog-card:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(0,0,0,.09);border-color:var(--y)}
+.card-img{
+  width:100%;height:180px;background:var(--yp);
+  display:flex;align-items:center;justify-content:center;
+  font-size:3rem;border-bottom:1px solid var(--bd);
+  flex-shrink:0;
+}
+.card-body{padding:1.5rem;display:flex;flex-direction:column;flex:1}
+.card-category{
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--y2);margin-bottom:.5rem;
+}
+.card-body h2{
+  font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;
+  color:var(--dk);line-height:1.3;margin-bottom:.6rem;
+  transition:color .2s;
+}
+.blog-card:hover .card-body h2{color:var(--y2)}
+.card-body p{font-size:.85rem;color:var(--mid);line-height:1.7;margin-bottom:1rem;flex:1}
+.card-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:.85rem;border-top:1px solid var(--bd);margin-top:auto;
+}
+.card-date{font-size:.75rem;color:var(--soft)}
+.card-link{
+  font-size:.78rem;font-weight:700;color:var(--y2);
+  display:flex;align-items:center;gap:.3rem;transition:gap .2s;
+}
+.blog-card:hover .card-link{gap:.55rem}
+
+/* FEATURED POST (first post — larger card) */
+.blog-card.featured{grid-column:span 3;display:grid;grid-template-columns:1fr 1fr}
+.blog-card.featured .card-img{height:100%;min-height:220px;font-size:4rem;border-bottom:none;border-right:1px solid var(--bd)}
+.blog-card.featured .card-body{padding:2rem 2.25rem;justify-content:center}
+.blog-card.featured .card-body h2{font-size:1.65rem;margin-bottom:.75rem}
+.blog-card.featured .card-body p{font-size:.925rem;margin-bottom:1.25rem}
+
+/* EMPTY STATE */
+.empty-state{
+  grid-column:span 3;text-align:center;padding:4rem 2rem;
+  color:var(--soft);
+}
+.empty-state p{font-size:.95rem;margin-top:.5rem}
+
+/* CTA BANNER */
+.blog-cta{
+  background:linear-gradient(135deg,var(--y),#e8b400);
+  padding:48px 6%;text-align:center;
+}
+.blog-cta h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;
+  color:var(--dk);margin-bottom:.5rem;
+}
+.blog-cta p{font-size:.92rem;color:rgba(17,16,16,.6);margin-bottom:1.4rem}
+.cta-btns{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{
+  background:var(--dk);padding:22px 6%;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;
+}
+.flogo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:var(--wh)}
+.flogo span{color:var(--y)}
+.fmid p,.fright p{font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.5}
+.fright{text-align:right}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .blog-grid{grid-template-columns:1fr 1fr}
+  .blog-card.featured{grid-column:span 2;grid-template-columns:1fr}
+  .blog-card.featured .card-img{border-right:none;border-bottom:1px solid var(--bd);height:200px}
+  .empty-state{grid-column:span 2}
+}
+@media(max-width:700px){
+  .nav-ul{display:none}
+  .ham{display:flex}
+  .blog-grid{grid-template-columns:1fr}
+  .blog-card.featured{grid-column:span 1;grid-template-columns:1fr}
+  .blog-card.featured .card-img{height:160px}
+  .empty-state{grid-column:span 1}
+  footer{flex-direction:column;text-align:center}
+  .fright{text-align:center}
+  .cta-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="logo">Brend<span>ora</span></a>
+  <ul class="nav-ul">
+    <li><a href="/#about">O nama</a></li>
+    <li><a href="/#services">Usluge</a></li>
+    <li><a href="/#process">Proces</a></li>
+    <li><a href="/blog.html" class="active">Blog</a></li>
+    <li><a href="/#contact">Kontakt</a></li>
+    <li><a href="https://calendly.com/formehe2/30min" target="_blank" rel="noopener" class="nav-cta">Besplatne konzultacije</a></li>
+  </ul>
+  <button class="ham" id="ham-btn" aria-label="Izbornik" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div id="mm">
+  <a href="/#about" onclick="closeNav()">O nama</a>
+  <a href="/#services" onclick="closeNav()">Usluge</a>
+  <a href="/#process" onclick="closeNav()">Proces</a>
+  <a href="/blog.html" onclick="closeNav()">Blog</a>
+  <a href="/#contact" onclick="closeNav()">Kontakt</a>
+  <a href="https://calendly.com/formehe2/30min" target="_blank" rel="noopener" class="mm-cta" onclick="closeNav()">Besplatne konzultacije →</a>
+</div>
+
+<!-- BLOG HERO -->
+<div class="blog-hero">
+  <div class="badge">✍️ &nbsp;Brendora Blog</div>
+  <h1>Savjeti za rast vašeg biznisa online</h1>
+  <div class="divider"></div>
+  <p>Web dizajn, SEO i digitalni marketing — praktični savjeti za tvrtke koje žele rasti na internetu.</p>
+</div>
+
+<!-- BLOG POSTS -->
+<section class="blog-section">
+  <div class="blog-grid">
+
+    <!-- ============================================================
+      HOW TO ADD A NEW POST:
+      1. Copy one <a class="blog-card"> block below
+      2. Paste it above the others (newest post first)
+      3. Update: href, card-img emoji, category, h2 title, description, date
+      4. Save and redeploy to Netlify
+      ============================================================ -->
+
+    <!-- FEATURED POST — most recent first -->
+    <a href="/blog/koliko-kosta-izrada-web-stranice-hrvatska-2026.html" class="blog-card featured">
+      <div class="card-img">💰</div>
+      <div class="card-body">
+        <div class="card-category">Web Dizajn</div>
+        <h2>Koliko košta izrada web stranice u Hrvatskoj (2026 vodič)</h2>
+        <p>Jedna agencija kaže 400 €, druga 5000 €. Realne cijene i što zapravo dobivate za svoj novac u Hrvatskoj u 2026. — bez kompliciranja i bez marketing magle.</p>
+        <div class="card-footer">
+          <span class="card-date">📅 15. ožujka 2026.</span>
+          <span class="card-link">Čitaj više →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- POST 2 -->
+    <a href="/blog/zasto-tvrtka-varazdin-treba-web-stranicu-2026.html" class="blog-card">
+      <div class="card-img">🌐</div>
+      <div class="card-body">
+        <div class="card-category">Web Dizajn</div>
+        <h2>Zašto svaka tvrtka u Varaždinu treba profesionalnu web stranicu u 2026.</h2>
+        <p>Ako vas nema na Googleu, za potencijalne klijente ne postojite. Saznajte zašto web stranica više nije luksuz — nego osnova svakog ozbiljnog poslovanja.</p>
+        <div class="card-footer">
+          <span class="card-date">📅 15. ožujka 2026.</span>
+          <span class="card-link">Čitaj više →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- ADD MORE POSTS ABOVE THIS LINE -->
+    <!-- Copy and paste this block for each new post:
+
+    <a href="/blog/NAZIV-DATOTEKE.html" class="blog-card">
+      <div class="card-img">EMOJI</div>
+      <div class="card-body">
+        <div class="card-category">KATEGORIJA</div>
+        <h2>NASLOV POSTA</h2>
+        <p>Kratki opis posta od 1-2 rečenice koji opisuje o čemu je post.</p>
+        <div class="card-footer">
+          <span class="card-date">📅 DAN. MJESEC GODINA.</span>
+          <span class="card-link">Čitaj više →</span>
+        </div>
+      </div>
+    </a>
+
+    -->
+
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="blog-cta">
+  <h2>Trebate web stranicu koja donosi klijente?</h2>
+  <p>Besplatne konzultacije &middot; Bez obaveza &middot; Varaždin i cijela Hrvatska</p>
+  <div class="cta-btns">
+    <a href="https://calendly.com/formehe2/30min" target="_blank" rel="noopener" class="btn btn-dk">📅 Zakažite termin</a>
+    <a href="/#contact" class="btn btn-ol">✉️ Pošaljite upit</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="flogo">Brend<span>ora</span></a>
+  <div class="fmid"><p>Računalno programiranje &middot; Varaždin, Hrvatska</p></div>
+  <div class="fright"><p>© 2026 Brendora. Sva prava pridržana.</p></div>
+</footer>
+
+<script>
+var navOpen = false;
+function toggleNav() {
+  navOpen = !navOpen;
+  document.getElementById('mm').classList.toggle('open', navOpen);
+}
+function closeNav() {
+  navOpen = false;
+  document.getElementById('mm').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+  if (navOpen && !document.getElementById('mm').contains(e.target) && !document.getElementById('ham-btn').contains(e.target)) {
+    closeNav();
+  }
+});
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').style.boxShadow = window.scrollY > 8 ? '0 2px 16px rgba(0,0,0,.08)' : 'none';
+}, {passive:true});
+</script>
+</body>
+</html>
